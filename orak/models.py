@@ -10,9 +10,9 @@ class Slot(models.Model):
         return f"{self.start_time.strftime('%H:%M')} - {self.end_time.strftime('%H:%M')}"
 
 class drumlesson_option(models.Model):
-    name = models.CharField(max_length=50, choices=[('Élő dobóra', 'Élő dobóra'), ('Offline dobóra', 'Offline dobóra')])
+    name = models.CharField(max_length=50, choices=[('Élő dobóra', 'Élő dobóra'), ('Online dobóra', 'Online dobóra')])
     date = models.DateField('Date', null=True)
-    slot = models.ForeignKey(Slot, on_delete=models.CASCADE, null=True)
+    slot = models.ForeignKey(Slot, on_delete=models.CASCADE, null=True, unique=True)
 
     def __str__(self):
         locale.setlocale(locale.LC_TIME, 'hu_HU')
@@ -35,7 +35,7 @@ class drumlesson_option(models.Model):
 class student(models.Model):
     name = models.CharField('Student name', max_length=50)
     email_address = models.EmailField(max_length=120)
-    drumlesson = models.ForeignKey(drumlesson_option, blank=True, null=True, on_delete=models.CASCADE, unique=True)
+    drumlesson = models.OneToOneField(drumlesson_option, blank=True, null=True, on_delete=models.CASCADE, unique=True)
 
     def __str__(self):
         return self.name

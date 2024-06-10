@@ -1,0 +1,26 @@
+{% extends 'orak/base.html' %}
+
+
+
+{% block content %}
+
+
+
+
+    <center>
+        <br/>
+    <h1>Foglalható időpontok</h1>
+    
+
+
+        <div class="select-option">
+            <label for="drumlesson_option">Drum Lesson Options:</label>
+            <select id="drumlesson_option">
+                {% for option in date_list %}
+                    <option value="{{ option.id }}">{{ option }}</option>
+                {% endfor %}
+            </select>
+        </div>
+    </center>
+
+{% endblock %} 
