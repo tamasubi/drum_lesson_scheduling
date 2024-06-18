@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser
 import locale
 
 
@@ -32,14 +33,11 @@ class drumlesson_option(models.Model):
 #        day_of_week = self.lesson_date.strftime('%A')
 #        return f"{self.name} - {day_of_week} {self.lesson_date.strftime('%Y-%m-%d')} {self.start_time.strftime('%H:%M')} - {self.end_time.strftime('%H:%M')}"
     
-class student(models.Model):
-    name = models.CharField('Student name', max_length=50)
-    email_address = models.EmailField(max_length=120)
-    drumlesson = models.OneToOneField(drumlesson_option, blank=True, null=True, on_delete=models.CASCADE, unique=True)
+
+class student(AbstractUser):
+    drumlesson = models.ForeignKey(drumlesson_option, blank=True, null=True, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.name
-    
-
+        return self.username
 
 
