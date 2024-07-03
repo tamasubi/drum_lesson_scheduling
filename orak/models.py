@@ -13,12 +13,13 @@ class Slot(models.Model):
 class drumlesson_option(models.Model):
     name = models.CharField(max_length=50, choices=[('Élő dobóra', 'Élő dobóra'), ('Online dobóra', 'Online dobóra')])
     date = models.DateField('Date', null=True)
-    slot = models.ForeignKey(Slot, on_delete=models.CASCADE, null=True, unique=True)
+    slots = models.ManyToManyField(Slot)
 
     def __str__(self):
         locale.setlocale(locale.LC_TIME, 'hu_HU')
         day_of_week = self.date.strftime('%A')
-        return f"{self.name} - {self.date} - {day_of_week} - | {self.slot} |"
+        slots_str = ', '.join([str(slot) for slot in self.slots.all()])
+        return f"{self.name} - {self.date} - {day_of_week} - |{slots_str}|"
 
 #class drumlesson(models.Model):
 #    name = models.CharField(max_length=50, choices=[('Élő', 'Élő'), ('Offline', 'Offline')])
@@ -35,7 +36,7 @@ class drumlesson_option(models.Model):
     
 
 class student(AbstractUser):
-    drumlesson = models.ForeignKey(drumlesson_option, blank=True, null=True, on_delete=models.CASCADE)
+    drumlesson = models.ForeignKey(drumlesson_option, blank=True, null=True, on_delete=models.CASCADE, unique=True)
 
     def __str__(self):
         return self.username

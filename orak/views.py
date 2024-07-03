@@ -4,6 +4,7 @@ from .models import drumlesson_option, student
 
 def dates(request):
     date_list = drumlesson_option.objects.all().exclude(student__isnull=False)
+    print(len(date_list))
     return render(request, 'orak/dates.html', {'date_list':date_list})
 
 
