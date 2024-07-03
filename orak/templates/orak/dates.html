@@ -4,23 +4,34 @@
 
 {% block content %}
 
-
+{% if user.is_authenticated %}
 
 
     <center>
         <br/>
-    <h1>Foglalható időpontok</h1>
+        <h1>Foglalható időpontok</h1>
+    
+        <form method="post">
+            {% csrf_token %}
+            <div class="select-option">
+                <label for="drumlesson_option">Drum Lesson Options:</label>
+                <select id="drumlesson_option" name="drumlesson_option">
+                    {% for option in date_list %}
+                        <option value="{{ option.id }}">{{ option }}</option>
+                    {% endfor %}
+                </select>
+                <button type="submit">Save Date</button>
+            </div>
+        </form>
+    </center>
+
+{% else %}
+    <h1>Sorry! You Must Be Logged In To View This Page...</h1>
+    
+    <a href="{% url 'login' %}">Login Here</a>
+    
+{% endif %}
     
 
-
-        <div class="select-option">
-            <label for="drumlesson_option">Drum Lesson Options:</label>
-            <select id="drumlesson_option">
-                {% for option in date_list %}
-                    <option value="{{ option.id }}">{{ option }}</option>
-                {% endfor %}
-            </select>
-        </div>
-    </center>
 
 {% endblock %} 
