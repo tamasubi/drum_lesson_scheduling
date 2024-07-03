@@ -4,6 +4,7 @@
 
 {% block content %}
 
+{% if user.is_authenticated %}
 
 
 
@@ -13,4 +14,10 @@
 
     </center>
 
+{% else %}
+<h1>Időpont foglaló. Jelentkezz be a folytatáshoz!</h1>
+    
+<a href="{% url 'login' %}">Login Here</a>
+
+{% endif %}
 {% endblock %} 

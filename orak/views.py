@@ -21,7 +21,7 @@ def dates(request):
 
 
 def home(request):
-    name = "Tamás"
+    name = request.user
     return render(request, 'orak/home.html', {'name': name})
 
 
