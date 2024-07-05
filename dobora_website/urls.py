@@ -17,6 +17,9 @@ import django
 from django.contrib import admin
 from django.urls import path, include
 from django.contrib.auth import urls
+#from django.conf import settings
+#from django.conf.urls.static import static
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -24,3 +27,6 @@ urlpatterns = [
     path('students/', include(django.contrib.auth.urls)),
     path('students/', include('students.urls')),
 ]
+
+#if settings.DEBUG:
+#    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
