@@ -1,59 +1,69 @@
 {% extends 'orak/base.html' %}
 
-
-
 {% block content %}
 
 {% if user.is_authenticated %}
 
-
-   <!-- <center>-->
-    
-
+    {% if submitted %}
+        <p>Your Venue Was Submitted Successfully!!!</p>
+    {% else %}
         <section class="slider_section long_section">
             <div id="customCarousel" class="carousel slide" data-ride="carousel">
-              <div class="carousel-inner">
-                <div class="carousel-item active">
-                  <div class="container ">
-                    <div class="row">
-                      <div class="col-md-5">
-                        <div class="detail-box">
-    
-
-                            <br>
-                            <h2>Foglalható időpontok</h2>
-                            <br/>
-                            <form method="post">
-                                {% csrf_token %}
-                                <div class="select-option">
-                                    <label for="drumlesson_option">Drum Lesson Options:</label>
-                                    <select id="drumlesson_option" name="drumlesson_option">
-                                        {% for option in date_list %}
-                                            <option value="{{ option.id }}">{{ option }}</option>
-                                        {% endfor %}
-                                    </select>
-                                    <br><br>
-                                    <div class="btn-box">
-                                        <button type="submit" class="btn1">Save Date</button>
-                                    </div>    
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <div class="detail-box">
+                                        <h2>Foglalható időpontok</h2>
+                                        <form method="post">
+                                            {% csrf_token %}
+                                            <div class="select-option">
+                                                <label for="drumlesson_option">Drum Lesson Options:</label>
+                                                <select id="drumlesson_option" name="drumlesson_option">
+                                                    {% for option in date_list %}
+                                                        <option value="{{ option.id }}">{{ option }}</option>
+                                                    {% endfor %}
+                                                </select>
+                                                <br><br>
+                                                <div class="btn-box">
+                                                    <button type="submit" class="btn1">Save Date</button>
+                                                </div>    
+                                            </div>
+                                        </form>
+                                    </div>
                                 </div>
-                            </form>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <br><br>
-
- 
-                        <!-- </center> -->
+        </section>
+    {% endif %}        
 
 {% else %}
-    <h1>Sorry! You Must Be Logged In To View This Page...</h1>
-    
-    <a href="{% url 'login' %}">Login Here</a>
+
+<section class="slider_section long_section">
+    <div id="customCarousel" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div class="detail-box">
+                                <h2>A dátum kiválasztásához be kell jelentkezned!</h2>
+                                <div class="btn-box">
+                                    <a href="{% url 'login' %}" class="btn1">Bejelentkezés</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
     
 {% endif %}
-    
 
-
-{% endblock %} 
+{% endblock %}

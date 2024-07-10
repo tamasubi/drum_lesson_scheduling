@@ -4,6 +4,7 @@ from .models import drumlesson_option, student
 
 def dates(request):
     date_list = drumlesson_option.objects.all().exclude(student__isnull=False)
+    submitted = False
     if request.method == 'POST':
         selected_date_id = request.POST.get('drumlesson_option')
         if selected_date_id is not None:
@@ -12,8 +13,9 @@ def dates(request):
                 student = request.user
                 student.drumlesson = selected_date
                 student.save()
-                return redirect('home')
-            except ValueError:
+                submitted = True
+                return render(request, 'orak/dates.html', {'date_list': date_list, 'submitted': submitted})
+            except (ValueError, drumlesson_option.DoesNotExist):
                 print("Invalid date selected")
                 return redirect('dates')
     else:
