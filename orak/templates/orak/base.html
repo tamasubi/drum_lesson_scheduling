@@ -14,7 +14,7 @@
   <meta name="description" content="" />
   <meta name="author" content="" />
 
-  <title>Edgecut</title>
+  <title>Időpont foglalás</title>
 
 
   <!-- bootstrap core css -->
@@ -37,9 +37,9 @@
     <!-- header section strats -->
     <header class="header_section long_section px-0">
       <nav class="navbar navbar-expand-lg custom_nav-container ">
-        <a class="navbar-brand" href="index.html">
+        <a class="navbar-brand" href="{% url 'home' %}">
           <span>
-            Edgecut
+            Időpont foglalás
           </span>
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -58,12 +58,14 @@
               <li class="nav-item">
                 <a class="nav-link" href="furniture.html">Asszisztens</a>
               </li>
+              {% if user.is_authenticated %}
               <li class="nav-item">
-                <a class="nav-link" href="blog.html">Blog</a>
+                <a class="nav-link" href="{% url 'lessons' %}">Órák</a>
               </li>
-              <li class="nav-item">
+              {% endif %}
+              <!--<li class="nav-item">
                 <a class="nav-link" href="contact.html">Contact Us</a>
-              </li>
+              </li>-->
             </ul>
           </div>
           <div class="quote_btn-container">
@@ -92,6 +94,16 @@
     </header>
     <!-- end header section -->
 
+        {% if messages %}
+        <div class="messages-container" ></div>
+          {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}" >
+              {{ message }}
+            </div>
+          {% endfor %}
+        {% endif %}
+
+  
     {% block content %}
 
     {% endblock %}
@@ -176,7 +188,7 @@
         <a href="">
           <i class="fa fa-phone" aria-hidden="true"></i>
           <span>
-            Call : +01 123455678990
+            Tel.: +01 123455678990
           </span>
         </a>
         <a href="">
@@ -185,14 +197,13 @@
             Email : demo@gmail.com
           </span>
         </a>
-        <a href="">
+        <a href="https://www.google.com/maps/place/Analog+Music+Hall/@47.4544462,19.0408071,17z/data=!3m1!4b1!4m6!3m5!1s0x4741dd9c059c1755:0xa9f14b1226cbbac2!8m2!3d47.4544426!4d19.043382!16s%2Fg%2F11h9rxjv81?entry=ttu" target="_blank" rel="noopener noreferrer">
           <i class="fa fa-map-marker" aria-hidden="true"></i>
           <span>
-            Location
+            Helyszín
           </span>
         </a>
       </div>
-
       <div class="info_top ">
         <div class="row ">
           <div class="col-sm-6 col-md-4 col-lg-3">
@@ -238,26 +249,11 @@
           </div>
           <div class="col-md-4">
             <div class="info_form">
-             <!--  <h4>
-                SIGN UP TO OUR NEWSLETTER
-              </h4>
-              <form action="">
-                <input type="text" placeholder="Enter Your Email" />
-                <button type="submit">
-                  Subscribe
-                </button>
-              </form>-->
               <div class="social_box">
-                <a href="">
+                <a href="https://www.facebook.com/hidasztamas/" target="_blank" rel="noopener noreferrer">
                   <i class="fa fa-facebook" aria-hidden="true"></i>
                 </a>
-            <!--    <a href="">
-                  <i class="fa fa-twitter" aria-hidden="true"></i>
-                </a>
-                <a href="">
-                  <i class="fa fa-linkedin" aria-hidden="true"></i>
-                </a> -->
-                <a href="">
+                <a href="https://www.instagram.com/hidtamas/?hl=hu" target="_blank" rel="noopener noreferrer">
                   <i class="fa fa-instagram" aria-hidden="true"></i>
                 </a>
               </div>

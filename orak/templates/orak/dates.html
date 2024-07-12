@@ -4,9 +4,6 @@
 
 {% if user.is_authenticated %}
 
-    {% if submitted %}
-        <p>Your Venue Was Submitted Successfully!!!</p>
-    {% else %}
         <section class="slider_section long_section">
             <div id="customCarousel" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner">
@@ -39,7 +36,7 @@
                 </div>
             </div>
         </section>
-    {% endif %}        
+
 
 {% else %}
 
@@ -63,7 +60,7 @@
         </div>
     </div>
 </section>
-    
+
 {% endif %}
 
 {% endblock %}

@@ -18,64 +18,29 @@
     </div>
 {% endif %}
 
-
 <section class="slider_section long_section">
-	<div id="customCarousel" class="carousel slide" data-ride="carousel">
-	  <div class="carousel-inner">
-		<div class="carousel-item active">
-		  <div class="container">
-			<div class="row">
-			  <div class="col-md-5">
-				<div class="detail-box">
-				  <h1>Register</h1>
-  
-				  <form action="" method="POST">
-				  {% csrf_token %}
-		  
-				  <form action="{% url 'register_user' %}" method=POST>
-					{% csrf_token %}
-		
-					{{ form.as_p }}
-		
-		  
-		
-		
-					
-		<br/><br/>
-			  <div class="btn-box">
-				<button type="submit" class="btn1">Reg</button>
-			  </div>
-				  </form>
-				  </div>
-				</div>
-			  </div>
-			</div>   
-		</div>
-	  </div>
-	  <!-- Add carousel controls if needed -->
-	</div>
-  </section>
-  
+    <div id="customCarousel" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div class="detail-box">
+                                <h1>Register</h1>
+                                <form action="{% url 'register_user' %}" method="POST">
+                                    {% csrf_token %}
+                                    {{ form.as_p }}
+                                    <div class="btn-box">
+                                        <button type="submit" class="btn1">Reg</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>   
+            </div>
+        </div>
+    </div>
+</section>
 
-<!--	<div class="shadow p-4 mb-5 bg-body rounded">
-	<h1>Register</h1>
-<br/>
-
-
-		<form action="{% url 'register_user' %}" method=POST>
-			{% csrf_token %}
-
-			{{ form.as_p }}
-
-  
-
-
-			
-<br/><br/>
-			<input type="submit" value="Submit" class="btn btn-secondary">
-
-		</form>
-		
-</div>
-<br/><br/>	-->
 {% endblock %}

@@ -13,7 +13,7 @@ def login_user(request):
 			login(request, user)
 			return redirect('dates-list')
 		else:
-			messages.success(request, ("There Was An Error Logging In, Try Again..."))	
+			messages.success(request, ("Hibás bejelentkezés, próbáld újra!"))	
 			return redirect('login')	
 
 
@@ -22,7 +22,7 @@ def login_user(request):
 
 def logout_user(request):
 	logout(request)
-	messages.success(request, ("You Were Logged Out!"))
+	messages.success(request, ("Sikeres kijelentkezés!"))
 	return redirect('home')
 
 
@@ -35,7 +35,7 @@ def register_user(request):
 			password = form.cleaned_data['password1']
 			user = authenticate(username=username, password=password)
 			login(request, user)
-			messages.success(request, ("Registration Successful!"))
+			messages.success(request, ("Sikeres regisztráció!"))
 			return redirect('home')
 	else:
 		form = studentCreationForm()
