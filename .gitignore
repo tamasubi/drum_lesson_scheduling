@@ -1,0 +1,32 @@
+# Python files
+*.py[cod]
+__pycache__/
+*.so
+
+# Django files
+*.log
+*.pot
+*.pyc
+__pycache__/
+db.sqlite3
+media/
+
+# Environment files
+.env
+*.env
+
+# Virtual environments
+venv/
+ENV/
+env/
+venv.bak/
+
+# Static files
+
+
+# Node modules
+node_modules/
+
+# OS generated files
+.DS_Store
+Thumbs.db

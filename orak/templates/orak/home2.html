@@ -1,0 +1,51 @@
+{% extends 'orak/base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+
+<div class="carousel-item">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-5">
+          <div class="detail-box">
+            <h1>
+                Dobóra foglalás <br>
+            </h1>
+            <p>
+                Jelentkezz be a foglaláshoz!
+            </p>
+            <div class="btn-box">
+              <a href="" class="btn1">
+                Contact Us
+              </a>
+              <a href="" class="btn2">
+                About Us
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-7">
+          <div class="img-box">
+            <img src="{% static 'orak/images/slider-img5.jpg' %}" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <center>
+        <br/>
+    <h1>Hello, {{ name }}!</h1>
+
+    </center>
+
+{% else %}
+<h1>Időpont foglaló. Jelentkezz be a folytatáshoz!</h1>
+    
+<a href="{% url 'login' %}">Login Here</a>
+
+{% endif %}
+{% endblock %} 

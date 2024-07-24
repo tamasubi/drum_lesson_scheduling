@@ -1,0 +1,66 @@
+{% extends 'orak/base.html' %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+    <section class="slider_section long_section">
+    <div id="customCarousel" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+        <div class="carousel-item active">
+            <div class="container">
+            <div class="row">
+                <div class="col-md-5">
+                <div class="detail-box">
+                  <br>
+                    <h2>Foglalt Dobóráid:</h2>
+                    <br> 
+                    <ul>
+                        {% for lesson in drumlessons %}
+                            <li>{{ lesson }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                </div>
+                <div class="col-md-7">
+                <div class="img-box">
+                    <img src="" alt="">
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        </div>
+    </div>
+    </section>
+{% else %}
+<section class="slider_section long_section">
+  <div id="customCarousel" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-5">
+              <div class="detail-box">
+                <h1>Dobóra foglalás</h1>
+                <p>Jelentkezz be a foglaláshoz!</p>
+                <div class="btn-box">
+                  <a href="{% url 'login' %}" class="btn1">Bejelentkezés</a>
+                  <a href="" class="btn2">About Us</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-7">
+              <div class="img-box">
+                <img src="" alt="">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endif %}
+
+{% endblock %}
+

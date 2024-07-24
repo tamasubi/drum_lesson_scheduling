@@ -1,16 +1,148 @@
 {% extends 'orak/base.html' %}
-
-
+{% load static %}
 
 {% block content %}
 
+{% if user.is_authenticated %}
+
+<section class="slider_section long_section">
+  <div id="customCarousel" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-5">
+              <div class="detail-box">
+                <h2>
+                  Szia, {{ name }}! <br>
+                </h2>
+                <p>
+                  Találtál már időpontot?
+                </p>
+                <div class="btn-box">
+                  <a href="{% url 'dates-list' %}" class="btn1">
+                    Időpontok
+                  </a>
+                  <a href="" class="btn2">
+                    About Us
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-7">
+              <div class="img-box">
+                <img src="{% static 'orak/images/slider-img6.jpeg' %}" alt="">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
 
 
-    <center>
-        <br/>
-    <h1>Hello, {{ name }}!</h1>
+{% else %}
+<!-- <h1>Időpont foglaló. Jelentkezz be a folytatáshoz!</h1>
+    
+<a href="{% url 'login' %}">Login Here</a> -->
 
-    </center>
 
-{% endblock %} 
+  <!-- slider section -->
+  <section class="slider_section long_section">
+    <div id="customCarousel" class="carousel slide" data-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-5">
+                <div class="detail-box">
+                  <h1>
+                      Dobóra foglalás <br>
+                  </h1>
+                  <p>
+                      Jelentkezz be a foglaláshoz vagy regiszrálj!
+                  </p>
+                  <div class="btn-box">
+                    <a href="{% url 'login' %}" class="btn1">
+                      Bejelentkezés
+                    </a>
+                    <a href="{% url 'register_user' %}" class="btn2">
+                      Regisztráció
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-7">
+                <div class="img-box">
+                  <img src="{% static 'orak/images/slider-img6.jpeg' %}" alt="">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-5">
+                <div class="detail-box">
+                  <h1>
+                      Dobóra foglalás <br>
+                  </h1>
+                  <p>
+                      Jelentkezz be a foglaláshoz!
+                  </p>
+                  <div class="btn-box">
+                    <a href="{% url 'login' %}" class="btn1">
+                      Bejelentkezés
+                    </a>
+                    <a href="{% url 'register_user' %}" class="btn2">
+                      Regisztráció
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-7">
+                <div class="img-box">
+                  <img src="{% static 'orak/images/slider-img5.jpg' %}" alt="">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-5">
+                <div class="detail-box">
+                  <h1>
+                    Dobóra foglalás <br>
+                  </h1>
+                  <p>
+                      Jelentkezz be a foglaláshoz!
+                  </p>
+                  <div class="btn-box">
+                    <a href="{% url 'login' %}" class="btn1">
+                      Bejelentkezés
+                    </a>
+                    <a href="" class="btn2">
+                      About Us
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-7">
+                <div class="img-box">
+                  <img src="{% static 'orak/images/slider-img4.jpg' %}" alt="">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Add carousel controls if needed -->
+    </div>
+  </section>
+
+{% endif %}
+{% endblock %}

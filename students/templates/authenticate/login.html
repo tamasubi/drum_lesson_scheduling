@@ -5,10 +5,46 @@
 {% block content %}
 
 
+<section class="slider_section long_section">
+  <div id="customCarousel" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-5">
+              <div class="detail-box">
+                <h1>Bejelentkezés {{ name }}</h1>
 
+                <form action="" method="POST">
+                {% csrf_token %}
+        
+                <form>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Felhasználónév</label>
+              <input type="text" class="form-control" name="username" aria-describedby="emailHelp">
+              
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Jelszó</label>
+              <input type="password" class="form-control" name="password">
+            </div>
+            <div class="btn-box">
+              <button type="submit" class="btn1">Bejelentkezés</button>
+            </div>
+                </form>
+                </div>
+              </div>
+            </div>
+          </div>   
+      </div>
+    </div>
+    <!-- Add carousel controls if needed -->
+  </div>
+</section>
 
     
-        <br/>
+  <!--      <br/>
+        
     <h1>Login {{ name }}</h1>
 
             <form action="" method="POST">
@@ -28,6 +64,6 @@
         <input type="submit" value="Submit" class="btn btn-primary">
             </form>
 
-    
+    -->
 
 {% endblock %} 
