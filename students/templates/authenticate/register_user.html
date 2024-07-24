@@ -26,12 +26,12 @@
                     <div class="row">
                         <div class="col-md-5">
                             <div class="detail-box">
-                                <h1>Register</h1>
+                                <h1>Regisztráció</h1>
                                 <form action="{% url 'register_user' %}" method="POST">
                                     {% csrf_token %}
                                     {{ form.as_p }}
                                     <div class="btn-box">
-                                        <button type="submit" class="btn1">Reg</button>
+                                        <button type="submit" class="btn1">Regisztrálok</button>
                                     </div>
                                 </form>
                             </div>

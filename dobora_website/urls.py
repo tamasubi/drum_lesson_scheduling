@@ -26,6 +26,7 @@ urlpatterns = [
     path('', include('orak.urls')),
     path('students/', include(django.contrib.auth.urls)),
     path('students/', include('students.urls')),
+    path('chatbot/', include('chatbot.urls')),
 ]
 
 if settings.DEBUG:

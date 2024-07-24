@@ -4,7 +4,7 @@ from django import forms
 from orak.models import student
 
 
-class studentCreationForm(UserCreationForm):
+class studentCreationForm(UserCreationForm):    
     class Meta:
         model = student
         fields = ['username', 'email', 'password1', 'password2']
