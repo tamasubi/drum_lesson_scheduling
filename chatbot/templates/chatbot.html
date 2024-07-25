@@ -20,7 +20,7 @@
               <b>AI Dobtanár asszisztens</b>
             </div>
             <div class="message-content">
-              Hi {{ user.username }}, I am your AI Chatbot, you can ask me anything.
+              Hello {{ user.username }}, hogyan segíthetek a dobolásban?
             </div>
           </div>
         </li>
@@ -55,9 +55,9 @@
     <form class="message-form" method="post" action="{% url 'chatbot' %}">
       {% csrf_token %}
       <div class="input-group">
-        <input type="text" class="form-control message-input" name="message" placeholder="Type your message...">
+        <input type="text" class="form-control message-input" name="message" placeholder="Kérdezz...">
         <div class="input-group-append">
-          <button type="submit" class="btn2">Send</button>
+          <button type="submit" class="btn2">Küld</button>
         </div>
       </div>
     </form>
