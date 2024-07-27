@@ -1,6 +1,9 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
-import locale
+from django.utils.translation import gettext_lazy as _
+from django.utils.formats import date_format
+from django.utils.timezone import localtime
+
 
 class Slot(models.Model):
     start_time = models.TimeField('Start Time', null=True)
@@ -15,8 +18,8 @@ class drumlesson_option(models.Model):
     slots = models.ManyToManyField(Slot)
 
     def __str__(self):
-        locale.setlocale(locale.LC_TIME, 'hu_HU')
-        day_of_week = self.date.strftime('%A')
+       # locale.setlocale(locale.LC_TIME, 'hu_HU')
+        day_of_week = date_format(self.date, 'l')
         slots_str = ', '.join([str(slot) for slot in self.slots.all()])
         return f"{self.name} - {self.date} - {day_of_week} - |{slots_str}|"
 
